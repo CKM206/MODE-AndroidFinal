@@ -141,15 +141,43 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return false;
     }
 
-//    public boolean deleteEmployee(Employee employee) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String deleteStatement = "DELETE FROM " + EMPLOYEE_TABLE + " WHERE " + COLUMN_ID + " = " + employee.getId();
-//
-//        db.rawQuery(deleteStatement, null);
-//
-//
-//        return false;
-//    }
+    public boolean deleteEmployee(Employee employee) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor result;
+
+        // Delete from Parttime or Fulltime
+
+        if(employee.getType().equals("P"))
+        {
+            String deleteStatement = "DELETE FROM " + PART_TIME_TABLE + " WHERE " + EMPLOYEE_ID + " = " + employee.getEmployeeID() + ";";
+            Log.d("DEL", "" + employee.getEmployeeID() + " | " + deleteStatement);
+            //result = db.rawQuery(deleteStatement, null);
+            db.execSQL(deleteStatement);
+            Log.d("DEL", "Deleted Part Time");
+        }
+        else
+        {
+            String deleteStatement = "DELETE FROM " + FULL_TIME_TABLE + " WHERE " + EMPLOYEE_ID + " = " + employee.getEmployeeID() + ";";
+
+             //result = db.rawQuery(deleteStatement, null);
+             db.execSQL(deleteStatement);
+             Log.d("DEL", "Deleted Full Time");
+        }
+
+
+        // Delete from the Employee Table
+
+            String deleteStatement = "DELETE FROM " + EMPLOYEE_TABLE + " WHERE " + COLUMN_ID + " = " + employee.getEmployeeID() + ";";
+
+            //db.rawQuery(deleteStatement, null);
+            db.execSQL(deleteStatement);
+            Log.d("DEL", "Deleted Employee");
+
+
+        return false;
+    }
 
     public List<Employee> getEmployee(){
 // create an empty list
@@ -163,6 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         if (cursor.moveToFirst()) {
             // loop through the cursor and populate returnList;
             do {
+                int empId = cursor.getInt(0);
                 String firstName = cursor.getString(1).split(" ", 2)[0];
                 String lastName = cursor.getString(1).split(" ", 2)[1];
                 //int birthYear  = cursor.getInt(2);
@@ -175,13 +204,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     int bonus = cursor.getInt(4);
 
 
-                    newFull = new FullTime(1, firstName, lastName, 1995, type, salary, bonus);
+                    newFull = new FullTime(empId, firstName, lastName, 1995, type, salary, bonus);
                     returnList.add(newFull);
                 }else if(type.equals("P")){
                     int hoursWorked = cursor.getInt(5);
                     int rate = cursor.getInt(6);
 
-                    newPart = new PartTime(1, firstName, lastName, 1990, type, hoursWorked, rate);
+                    newPart = new PartTime(empId, firstName, lastName, 1990, type, hoursWorked, rate);
                     returnList.add(newPart);
                 }
 
