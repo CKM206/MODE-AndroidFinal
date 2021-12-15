@@ -21,8 +21,8 @@ public class PartTime extends Employee{
         this.rate = rate;
     }
 
-    public PartTime(int employeeID, String firstName, String lastName, int birthYear, int hoursWorked, int rate) {
-        super(employeeID, firstName, lastName, birthYear);
+    public PartTime(int employeeID, String firstName, String lastName, int birthYear, String type, int hoursWorked, int rate) {
+        super(employeeID, firstName, lastName, birthYear, type);
         this.hoursWorked = hoursWorked;
         this.rate = rate;
     }

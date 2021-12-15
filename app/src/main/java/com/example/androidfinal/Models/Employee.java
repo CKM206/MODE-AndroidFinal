@@ -6,6 +6,7 @@ public abstract class Employee {
     private String firstName;
     private String lastName;
     private int birthYear;
+    private String type;
 
     public Vehicle vref;
 
@@ -41,11 +42,20 @@ public abstract class Employee {
         this.birthYear = birthYear;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, int birthYear) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Employee(int employeeID, String firstName, String lastName, int birthYear, String type) {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthYear = birthYear;
+        this.type = type;
         vref = null;
     }
 
@@ -54,14 +64,16 @@ public abstract class Employee {
         this.firstName = "";
         this.lastName = "";
         this.birthYear = 0;
+        this.type = "P";
         vref = null;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, int birthYear, Vehicle vref) {
+    public Employee(int employeeID, String firstName, String lastName, int birthYear, String type, Vehicle vref) {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthYear = birthYear;
+        this.type = type;
         this.vref = vref;
     }
 
@@ -78,6 +90,7 @@ public abstract class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthYear=" + birthYear +
+                ", type=" + type +
                 '}';
     }
 }
