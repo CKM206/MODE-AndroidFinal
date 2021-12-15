@@ -31,28 +31,15 @@
         app:layout_constraintTop_toBottomOf="@+id/txtManageEmployeesMsg"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/etPayroll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstvEmployees"
-        app:layout_constraintVertical_bias="0.446" />
-
     <TextView
         android:id="@+id/txtPayrollLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="68dp"
         android:text="Payroll"
-        app:layout_constraintBottom_toTopOf="@+id/etPayroll"
-        app:layout_constraintStart_toStartOf="@+id/etPayroll" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lstvEmployees" />
 
     <Button
         android:id="@+id/btnDeleteEmployee"
@@ -60,7 +47,17 @@
         android:layout_height="wrap_content"
         android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etPayroll"
-        app:layout_constraintTop_toTopOf="@+id/etPayroll" />
+        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintStart_toEndOf="@+id/txtPayrollDisplay"
+        app:layout_constraintTop_toTopOf="@+id/txtPayrollLabel" />
+
+    <TextView
+        android:id="@+id/txtPayrollDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/txtPayrollLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtPayrollLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
