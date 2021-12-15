@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".AddEmployeeFulltime">
 
+    <Button
+        android:id="@+id/btnSubmitEmployeeFullTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="handleSubmitAddFullTime"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etBonus" />
+
     <TextView
         android:id="@+id/txtAddEmployeeMsg"
         android:layout_width="wrap_content"
@@ -91,12 +102,10 @@
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSalary"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/etSalary" />
 
     <TextView
         android:id="@+id/txtSalaryLabel"
