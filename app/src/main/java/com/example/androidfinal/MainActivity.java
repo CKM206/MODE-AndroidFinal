@@ -1,5 +1,6 @@
 package com.example.androidfinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.androidfinal.helpers.DatabaseHelper;
@@ -18,8 +19,6 @@ import com.example.androidfinal.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.example.androidfinal.Models.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,5 +43,29 @@ public class MainActivity extends AppCompatActivity {
          result = databaseHelper.addPartTime(employee2);
 
     }
+  
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 
+    public void handleAddFullTimeEmpOptionClick(View view) {
+        Intent intent = new Intent(MainActivity.this, AddEmployeeFulltime.class);
+
+        startActivity(intent);
+    }
+
+    public void handleAddPartTimeEmpOptionClick(View view) {
+        Intent intent = new Intent(MainActivity.this, AddEmployeeParttime.class);
+
+        startActivity(intent);
+    }
+
+    public void handleManageEmpsClick(View view) {
+        Intent intent = new Intent(MainActivity.this, ManageEmployees.class);
+
+        startActivity(intent);
+    }
 }
