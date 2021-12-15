@@ -55,7 +55,6 @@
         android:id="@+id/txtPayrollDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="@+id/txtPayrollLabel"
         app:layout_constraintTop_toBottomOf="@+id/txtPayrollLabel" />
