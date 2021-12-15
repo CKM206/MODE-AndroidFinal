@@ -85,12 +85,6 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeID='" + employeeID + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthYear=" + birthYear +
-                ", type=" + type +
-                '}';
+        return "Title: " + this.firstName + " " + this.lastName;
     }
 }
