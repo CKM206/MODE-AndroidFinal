@@ -151,6 +151,52 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 //        return false;
 //    }
 
+    public List<Employee> getEmployee(){
+// create an empty list
+        List<Employee> returnList = new ArrayList<>();
+
+        // populate the list with database query
+        String queryString = "SELECT EMPLOYEE_TABLE.ID, EMPLOYEE_TABLE.EMPLOYEE_NAME, EMPLOYEE_TABLE.COLUMN_TYPE, FULL_TIME_TABLE.SALARY, FULL_TIME_TABLE.BONUS, PART_TIME_TABLE.HOURS_WORKED, PART_TIME_TABLE.RATE FROM EMPLOYEE_TABLE LEFT OUTER JOIN FULL_TIME_TABLE ON EMPLOYEE_TABLE.ID = FULL_TIME_TABLE.EMPLOYEE_ID LEFT OUTER JOIN PART_TIME_TABLE ON EMPLOYEE_TABLE.ID = PART_TIME_TABLE.EMPLOYEE_ID GROUP BY EMPLOYEE_TABLE.ID;";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            // loop through the cursor and populate returnList;
+            do {
+                String firstName = cursor.getString(1).split(" ", 2)[0];
+                String lastName = cursor.getString(1).split(" ", 2)[1];
+                //int birthYear  = cursor.getInt(2);
+                String type  = cursor.getString(2);
+                FullTime newFull;
+                PartTime newPart;
+
+                if(type.equals("F")){
+                    int salary = cursor.getInt(3);
+                    int bonus = cursor.getInt(4);
+
+
+                    newFull = new FullTime(1, firstName, lastName, 1995, type, salary, bonus);
+                    returnList.add(newFull);
+                }else if(type.equals("P")){
+                    int hoursWorked = cursor.getInt(5);
+                    int rate = cursor.getInt(6);
+
+                    newPart = new PartTime(1, firstName, lastName, 1990, type, hoursWorked, rate);
+                    returnList.add(newPart);
+                }
+
+            } while (cursor.moveToNext()); // point to the next record or to EOF
+        } else {
+
+
+
+        }
+
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
 
 
 

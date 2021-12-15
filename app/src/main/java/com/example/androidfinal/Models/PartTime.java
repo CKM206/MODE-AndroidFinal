@@ -1,5 +1,10 @@
 package com.example.androidfinal.Models;
 
+import android.media.Image;
+import android.widget.ImageView;
+
+import com.example.androidfinal.R;
+
 public class PartTime extends Employee{
 
     private int hoursWorked;
@@ -41,9 +46,7 @@ public class PartTime extends Employee{
 
     @Override
     public String toString() {
-        return super.toString() + " PartTime{" +
-                "hoursWorked=" + hoursWorked +
-                ", rate=" + rate +
-                '}';
+        int smile = R.drawable.smile1;
+        return super.toString() + ", Subtitle: Part-time " ;
     }
 }
