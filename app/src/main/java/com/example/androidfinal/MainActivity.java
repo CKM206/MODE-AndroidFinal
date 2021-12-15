@@ -3,6 +3,8 @@ package com.example.androidfinal;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.androidfinal.Models.FullTime;
+import com.example.androidfinal.Models.PartTime;
 import com.example.androidfinal.helpers.DatabaseHelper;
 import com.google.android.material.snackbar.Snackbar;
 
