@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
          FullTime employee = new FullTime(1, "Eduardo", "San Martin Celi", 1995, "F", 65000, 250);
          PartTime employee2 = new PartTime(1, "Tom", "Zielinski", 1990, "P",48, 35);
+         //databaseHelper.deleteEmployee(employee2);
 
          boolean result = databaseHelper.addFullTime(employee);
          result = databaseHelper.addPartTime(employee2);
