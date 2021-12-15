@@ -1,8 +1,7 @@
 package com.example.androidfinal;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,8 +16,6 @@ import com.example.androidfinal.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.example.androidfinal.Models.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,14 +34,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -74,5 +63,23 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void handleAddFullTimeEmpOptionClick(View view) {
+        Intent intent = new Intent(MainActivity.this, AddEmployeeFulltime.class);
+
+        startActivity(intent);
+    }
+
+    public void handleAddPartTimeEmpOptionClick(View view) {
+        Intent intent = new Intent(MainActivity.this, AddEmployeeParttime.class);
+
+        startActivity(intent);
+    }
+
+    public void handleManageEmpsClick(View view) {
+        Intent intent = new Intent(MainActivity.this, ManageEmployees.class);
+
+        startActivity(intent);
     }
 }
