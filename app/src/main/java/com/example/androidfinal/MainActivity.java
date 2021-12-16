@@ -3,9 +3,6 @@ package com.example.androidfinal;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.androidfinal.Models.FullTime;
-import com.example.androidfinal.Models.PartTime;
-import com.example.androidfinal.helpers.DatabaseHelper;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
-         databaseHelper = new DatabaseHelper(MainActivity.this);
-
-         FullTime employee = new FullTime(1, "Eduardo", "San Martin Celi", 1995, "F", 65000, 250);
-         PartTime employee2 = new PartTime(1, "Tom", "Zielinski", 1990, "P",48, 35);
-         //databaseHelper.deleteEmployee(employee2);
-
-         boolean result = databaseHelper.addFullTime(employee);
-         result = databaseHelper.addPartTime(employee2);
 
     }
   
